@@ -26,7 +26,7 @@ export default function About() {
     const interests = [
         { icon: "🌲", title: "Nature", description: "Recharging in the mountains & forests" },
         { icon: "🎮", title: "Gaming", description: "Tactical FPS & Strategy games" },
-        { icon: "📖", title: "Reading", description: "Philosophy, Finance & Psychology" },
+        { icon: "📺", title: "Movies", description: "Science-fiction" },
     ];
 
     return (

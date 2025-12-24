@@ -17,7 +17,7 @@ export default function Projects() {
             id: 2,
             title: "Hotel Booking System",
             description: "A full-stack hotel booking app featuring secure authentication, room reservations, an admin dashboard, and automated email notifications for seamless management.",
-            image: "/hotel-booking.png",
+            image: "/Hotel-booking.png",
             tags: ["HTML","CSS","JavaScript", "Node.js", "Express.js", " MongoDB", "SendGrid"],
             github: "https://github.com/Aryan-404-404/Hotel-booking-Site",
             live: "https://hotel-booking-site-frontend.onrender.com/",
