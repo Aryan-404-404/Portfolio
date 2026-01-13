@@ -151,8 +151,8 @@ export default function Contact() {
               </a>
               
               <a
-                href="/Aryan_Resume_MERN.pdf"
-                download="Aryan_Resume_MERN.pdf"
+                href="/Aryan_MERN_Developer.pdf"
+                download="Aryan_MERN_Developer.pdf"
                 className="relative px-8 py-4 text-white font-semibold overflow-hidden group rounded-lg border border-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
