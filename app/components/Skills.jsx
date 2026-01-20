@@ -1,4 +1,5 @@
 import React from 'react'
+import { Sparkles } from 'lucide-react';
 
 export default function Skills() {
     const skillCategories = [
@@ -12,12 +13,12 @@ export default function Skills() {
             ),
             gradient: "from-blue-500 to-cyan-500",
             skills: [
-                { name: "MERN Stack (React/Node)", level: 80 }, // Combined for impact
-                { name: "Next.js 14", level: 75 },
-                { name: "Tailwind", level: 85 },
-                { name: "JS (ES6+)", level: 75 },
-                { name: "Auth (JWT, BCrypt, RBAC)", level: 85 },
-                { name: "Recharts & Data Viz", level: 75 }
+                "MERN Stack (React/Node)",
+                "Next.js 14",
+                "Tailwind",
+                "JS (ES6+)",
+                "Auth (JWT, BCrypt, RBAC)",
+                "Recharts & Data Viz"
             ]
         },
         {
@@ -30,10 +31,10 @@ export default function Skills() {
             ),
             gradient: "from-purple-500 to-pink-500",
             skills: [
-                { name: "Node.js & Express", level: 85 },
-                { name: "MongoDB & Mongoose", level: 80 },
-                { name: "Auth (JWT/OAuth)", level: 80 },
-                { name: "RBAC (Access Control)", level: 80 }
+                "Node.js & Express",
+                "MongoDB & Mongoose",
+                "Auth (JWT/OAuth)",
+                "RBAC (Access Control)"
             ]
         },
         {
@@ -47,12 +48,12 @@ export default function Skills() {
             ),
             gradient: "from-green-500 to-emerald-500",
             skills: [
-                { name: "Gemini / OpenAI API", level: 77 },
-                { name: "Agentic AI (Function Calling)", level: 70 },
-                { name: "DSA (175+ Solved)", level: 70 },
-                { name: "Postman API Testing", level: 90 },
-                { name: "Git & Version Control", level: 80 },
-                { name: "Prompt Engineering", level: 85 }
+                "Gemini / OpenAI API",
+                "Agentic AI (Function Calling)",
+                "DSA (175+ Solved)",
+                "Postman API Testing",
+                "Git & Version Control",
+                "Prompt Engineering"
             ]
         }
     ];
@@ -78,7 +79,7 @@ export default function Skills() {
             </div>
 
             {/* Grid pattern */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-size:100px_100px"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-size-[100px_100px]"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section header */}
@@ -94,7 +95,7 @@ export default function Skills() {
                         </span>
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        A comprehensive overview of my technical skills and proficiency levels across various technologies
+                        A comprehensive overview of my technical skills and proficiency across various technologies
                     </p>
                 </div>
 
@@ -103,7 +104,7 @@ export default function Skills() {
                     {skillCategories.map((category) => (
                         <div
                             key={category.id}
-                            className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500"
+                            className="group relative bg-linear-to-br from-white/5 to-white/2 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500"
                         >
                             {/* Category header */}
                             <div className="flex items-center gap-4 mb-6">
@@ -115,42 +116,35 @@ export default function Skills() {
                                 </h3>
                             </div>
 
-                            {/* Skills with progress bars */}
-                            <div className="space-y-4">
+                            {/* Skills */}
+                            <div className="flex flex-wrap gap-2">
                                 {category.skills.map((skill, index) => (
-                                    <div key={index}>
-                                        <div className="flex justify-between items-center mb-2">
-                                            <span className="text-gray-300 text-sm font-medium">
-                                                {skill.name}
-                                            </span>
-                                            <span className="text-gray-400 text-xs">
-                                                {skill.level}%
-                                            </span>
-                                        </div>
-                                        <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                                            <div
-                                                className={`h-full bg-linear-to-r ${category.gradient} rounded-full transition-all duration-1000 ease-out`}
-                                                style={{ width: `${skill.level}%` }}
-                                            ></div>
-                                        </div>
-                                    </div>
+                                    <span
+                                        key={index}
+                                        className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 hover:border-white/20 text-gray-300 hover:text-white text-sm transition-all duration-300"
+                                    >
+                                        {skill}
+                                    </span>
                                 ))}
                             </div>
 
                             {/* Glow effect */}
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl`}>
-                                <div className={`absolute inset-0 bg-linear-to-br ${category.gradient} blur-xl opacity-10`}></div>
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl">
+                                <div className={`absolute inset-0 bg-linear-to-br ${category.gradient} blur-xl opacity-5`}></div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Additional skills cloud */}
-                <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                {/* Additional skills */}
+                <div className="relative bg-linear-to-br from-white/5 to-white/2 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
                     <div className="text-center mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-2">
-                            Additional Skills
-                        </h3>
+                        <div className="inline-flex items-center gap-2 mb-3">
+                            <Sparkles className="text-purple-400" size={20} />
+                            <h3 className="text-2xl font-bold text-white">
+                                Additional Skills
+                            </h3>
+                        </div>
                         <p className="text-gray-400 text-sm">
                             Other technologies and methodologies I work with
                         </p>
@@ -160,7 +154,7 @@ export default function Skills() {
                         {additionalSkills.map((skill, index) => (
                             <span
                                 key={index}
-                                className="group px-6 py-3 bg-white/5 rounded-full border border-white/10 hover:border-white/30 text-gray-300 hover:text-white text-sm font-medium transition-all duration-300 hover:scale-110 hover:bg-white/10 cursor-default"
+                                className="px-6 py-3 bg-white/5 rounded-full border border-white/10 hover:border-purple-500/50 text-gray-300 hover:text-white text-sm font-medium transition-all duration-300 hover:scale-105 hover:bg-white/10"
                             >
                                 {skill}
                             </span>

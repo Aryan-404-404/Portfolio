@@ -10,7 +10,7 @@ export default function Projects() {
             image: "/expense-tracker.png",
             tags: ["React.js","Tailwind CSS", "Node.js", "Express.js", " MongoDB", "Google Gemini API", "Recharts"],
             github: "https://github.com/Aryan-404-404/Expense-Tracker",
-            live: "https://expense-tracker-frontend-frqq.onrender.com/",
+            live: "https://ai-expense-tracker-seven-alpha.vercel.app/",
             gradient: "from-blue-500 to-cyan-500"
         },
         {
