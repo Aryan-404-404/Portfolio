@@ -15,12 +15,12 @@ export default function Projects() {
         },
         {
             id: 2,
-            title: "Hotel Booking System",
-            description: "A full-stack hotel booking app featuring secure authentication, room reservations, an admin dashboard, and automated email notifications for seamless management.",
-            image: "/Hotel-booking.png",
-            tags: ["HTML","CSS","JavaScript", "Node.js", "Express.js", " MongoDB", "SendGrid"],
-            github: "https://github.com/Aryan-404-404/Hotel-booking-Site",
-            live: "https://hotel-booking-site-frontend.onrender.com/",
+            title: "JobFlow.ai",
+            description: "A distributed system designed to bridge the gap between job browsing and application management. It combines a Chrome Extension for instant data extraction with a MERN Stack Dashboard powered by Groq AI to score resumes and track applications in real-time",
+            image: "/Jobflow_AI.png",
+            tags: ["React","Tailwind CSS","Vite", "Node.js", "Express.js", " MongoDB", "Groq API", "Menifest V3"],
+            github: "https://github.com/Aryan-404-404/JobFlow-AI",
+            live: "https://job-flow-ai-three.vercel.app/",
             gradient: "from-purple-500 to-pink-500"
         },
         {

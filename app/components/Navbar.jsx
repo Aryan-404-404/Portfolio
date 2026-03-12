@@ -20,6 +20,7 @@ export default function Navbar() {
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Blogs', href: '#blogs' },
   ];
 
   const smoothScroll = (e, href) => {
