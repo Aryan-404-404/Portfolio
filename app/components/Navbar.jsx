@@ -1,140 +1,161 @@
-'use client'
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+
+const NAV_LINKS = [
+  { label: 'home',     href: '#home',     num: '00.' },
+  { label: 'about',    href: '#about',    num: '01.' },
+  { label: 'projects', href: '#projects', num: '02.' },
+  { label: 'skills',   href: '#skills',   num: '03.' },
+  { label: 'blogs',    href: '#blogs',    num: '04.' },
+  { label: 'contact',  href: '#contact',  num: '05.' },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive]   = useState('home');
+  const [menuOpen, setMenu]   = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const sections = document.querySelectorAll('section[id]');
+      let current = 'home';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      setActive(current);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Blogs', href: '#blogs' },
-  ];
-
-  const smoothScroll = (e, href) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsOpen(false);
-      setActiveSection(href.substring(1));
-    }
+  const handleNav = (href) => {
+    setMenu(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-lg shadow-lg shadow-blue-500/10' 
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo with glow effect */}
-          <div className="shrink-0 relative group">
-            <a 
-              href="#home" 
-              onClick={(e) => smoothScroll(e, '#home')}
-              className="text-2xl font-bold relative"
-            >
-              <span className="relative z-10 bg-linear-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                {"< Aryan />"}
-              </span>
-              <span className="absolute inset-0 blur-xl bg-linear-to-r from-blue-400 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-60 transition-opacity"></span>
-            </a>
-          </div>
+    <>
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 5%', height: '64px',
+        background: scrolled ? 'rgba(8,12,16,0.92)' : 'rgba(8,12,16,0.7)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: `1px solid ${scrolled ? 'var(--border)' : 'transparent'}`,
+        transition: 'background 0.3s, border-color 0.3s',
+      }}>
+        {/* Logo */}
+        <a
+          href="#home"
+          onClick={e => { e.preventDefault(); handleNav('#home'); }}
+          style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', fontWeight: 500, color: 'var(--text)' }}
+        >
+          &lt;<span style={{ color: 'var(--green)' }}> Aryan </span>/&gt;
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => smoothScroll(e, item.href)}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group ${
-                  activeSection === item.href.substring(1)
-                    ? 'text-blue-400'
-                    : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                <span className="relative z-10">{item.name}</span>
-                <span className="absolute inset-0 bg-linear-to-r from-blue-500/0 via-blue-500/10 to-purple-500/0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                {activeSection === item.href.substring(1) && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r from-blue-400 to-purple-500"></span>
-                )}
-              </a>
-            ))}
+        {/* Desktop links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
+          {NAV_LINKS.map(({ label, href, num }) => (
             <a
-              href="#contact"
-              onClick={(e) => smoothScroll(e, '#contact')}
-              className="relative ml-4 px-6 py-2.5 text-sm font-semibold text-white overflow-hidden group rounded-lg"
+              key={label}
+              href={href}
+              onClick={e => { e.preventDefault(); handleNav(href); }}
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                color: active === label ? 'var(--green)' : 'var(--faint)',
+                letterSpacing: '0.06em',
+                transition: 'color 0.2s',
+              }}
             >
-              <span className="absolute inset-0 bg-linear-to-r from-blue-600 to-purple-600"></span>
-              <span className="absolute inset-0 bg-linear-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              <span className="relative z-10">Let's Talk</span>
-              <span className="absolute inset-0 rounded-lg ring-1 ring-white/20"></span>
+              <span style={{ color: 'var(--green)', marginRight: '3px' }}>{num}</span>
+              {label}
             </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="relative p-2 text-gray-300 hover:text-white transition-colors group"
-            >
-              <span className="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              {isOpen ? <X size={24} className="relative z-10" /> : <Menu size={24} className="relative z-10" />}
-            </button>
-          </div>
+          ))}
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      <div 
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-4 py-4 bg-black/95 backdrop-blur-xl border-t border-white/10">
-          <div className="space-y-2">
-            {navItems.map((item, index) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => smoothScroll(e, item.href)}
-                className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
-                  activeSection === item.href.substring(1)
-                    ? 'bg-linear-to-r from-blue-500/20 to-purple-500/20 text-blue-400'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
-                }`}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                {item.name}
-              </a>
-            ))}
+        {/* Hire me CTA */}
+        <a
+          href="mailto:aryan411770@gmail.com"
+          className="desktop-nav"
+          style={{
+            fontFamily: 'var(--font-mono)', fontSize: '11px', fontWeight: 500,
+            padding: '7px 16px', borderRadius: '6px',
+            background: 'var(--green)', color: '#050a05',
+            transition: 'opacity 0.2s',
+          }}
+          onMouseEnter={e => (e.target.style.opacity = '0.85')}
+          onMouseLeave={e => (e.target.style.opacity = '1')}
+        >
+          hire me
+        </a>
+
+        {/* Hamburger */}
+        <button
+          onClick={() => setMenu(!menuOpen)}
+          aria-label="Toggle menu"
+          className="hamburger-btn"
+          style={{
+            display: 'none', flexDirection: 'column', gap: '5px',
+            background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
+          }}
+        >
+          {[0, 1, 2].map(i => (
+            <span key={i} style={{
+              display: 'block', width: '20px', height: '1.5px',
+              background: menuOpen ? 'var(--green)' : 'var(--faint)',
+              transition: 'background 0.2s',
+            }} />
+          ))}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 90,
+          background: 'rgba(8,12,16,0.97)',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center', gap: '32px',
+        }}>
+          {NAV_LINKS.map(({ label, href }) => (
             <a
-              href="#contact"
-              onClick={(e) => smoothScroll(e, '#contact')}
-              className="block px-4 py-3 text-sm font-semibold text-center text-white bg-linear-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all"
+              key={label}
+              href={href}
+              onClick={e => { e.preventDefault(); handleNav(href); }}
+              style={{
+                fontFamily: 'var(--font-mono)', fontSize: '16px',
+                color: active === label ? 'var(--green)' : 'var(--muted)',
+                letterSpacing: '0.1em',
+              }}
             >
-              Let's Talk
+              {label}
             </a>
-          </div>
+          ))}
+          <a
+            href="mailto:aryan411770@gmail.com"
+            style={{
+              fontFamily: 'var(--font-mono)', fontSize: '12px',
+              padding: '10px 24px', borderRadius: '8px',
+              background: 'var(--green)', color: '#050a05',
+            }}
+            onClick={() => setMenu(false)}
+          >
+            hire me
+          </a>
         </div>
-      </div>
-    </nav>
+      )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .hamburger-btn { display: flex !important; }
+        }
+      `}</style>
+    </>
   );
 }
