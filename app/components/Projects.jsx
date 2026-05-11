@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const PROJECTS = [
-  
   {
     title: 'RepoCLI',
     tag: 'npm',
@@ -36,11 +35,11 @@ const PROJECTS = [
     title: 'AI Resume Analyzer',
     tag: 'live',
     image: '/Resume-analyzer.png',
-    desc: "ATS-optimized resume analysis tool with client-side PDF parsing via Web Workers (zero backend latency). Achieved 10x faster inference by migrating from Gemini to Groq\u2019s Llama 3.3. Strict JSON validation ensures reliable AI outputs for skill gap detection.",
+    desc: 'ATS-optimized resume analysis tool with client-side PDF parsing via Web Workers (zero backend latency). Achieved 10x faster inference by migrating from Gemini to Groq\'s Llama 3.3. Strict JSON validation ensures reliable AI outputs for skill gap detection.',
     pills: ['TypeScript', 'Groq API', 'pdfjs-dist', 'Web Workers', 'React', 'Tailwind'],
     demo: 'https://ai-resume-analyzer-pi-ruby.vercel.app/',
     source: 'https://github.com/Aryan-404-404/AI-Resume-Analyzer',
-  }
+  },
 ];
 
 function ProjectCard({ project }) {
@@ -66,7 +65,7 @@ function ProjectCard({ project }) {
         e.currentTarget.style.transform = 'none';
       }}
     >
-      {/* Image / placeholder */}
+      {/* Image */}
       <div style={{
         height: '180px',
         background: 'var(--bg2)',
@@ -76,6 +75,7 @@ function ProjectCard({ project }) {
         alignItems: 'center',
         justifyContent: 'center',
         borderBottom: '1px solid var(--border)',
+        flexShrink: 0,
       }}>
         {image ? (
           <Image
@@ -102,15 +102,10 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Body */}
-      <div style={{ padding: '16px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
 
         {/* Tag + links row */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: '10px',
-        }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{
             fontFamily: 'var(--font-mono)',
             fontSize: '9px',
@@ -131,12 +126,7 @@ function ProjectCard({ project }) {
                 href={demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10px',
-                  color: 'var(--faint)',
-                  transition: 'color 0.2s',
-                }}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)', transition: 'color 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--green)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--faint)')}
               >
@@ -148,12 +138,7 @@ function ProjectCard({ project }) {
                 href={source}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10px',
-                  color: 'var(--faint)',
-                  transition: 'color 0.2s',
-                }}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)', transition: 'color 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--green)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--faint)')}
               >
@@ -164,30 +149,34 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Title */}
-        <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>
+        <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
           {title}
         </h3>
 
-        {/* Description */}
-        <p style={{ fontSize: '12px', color: 'var(--muted)', lineHeight: 1.75, flex: 1, marginBottom: '14px' }}>
+        {/* Description — fixed height so cards don't stretch unevenly */}
+        <p style={{
+          fontSize: '12px', color: 'var(--muted)', lineHeight: 1.75,
+          margin: 0,
+          display: '-webkit-box',
+          WebkitLineClamp: 4,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+        }}>
           {desc}
         </p>
 
         {/* Tech pills */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginTop: '4px' }}>
           {pills.map(pill => (
-            <span
-              key={pill}
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '9px',
-                padding: '3px 7px',
-                borderRadius: '4px',
-                border: '1px solid var(--border2)',
-                color: 'var(--faint)',
-                background: 'var(--bg2)',
-              }}
-            >
+            <span key={pill} style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '9px',
+              padding: '3px 7px',
+              borderRadius: '4px',
+              border: '1px solid var(--border2)',
+              color: 'var(--faint)',
+              background: 'var(--bg2)',
+            }}>
               {pill}
             </span>
           ))}
@@ -222,15 +211,7 @@ export default function Projects() {
         <div className="sec-line" />
       </div>
 
-      <div
-        className="proj-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '16px',
-          marginBottom: '32px',
-        }}
-      >
+      <div className="proj-grid" style={{ marginBottom: '32px' }}>
         {PROJECTS.map(p => (
           <ProjectCard key={p.title} project={p} />
         ))}
@@ -259,6 +240,19 @@ export default function Projects() {
           View All Projects on GitHub →
         </a>
       </div>
+
+      <style>{`
+        .fade-section { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-section.visible { opacity: 1; transform: none; }
+        .proj-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+        @media (max-width: 700px) {
+          .proj-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </section>
   );
 }

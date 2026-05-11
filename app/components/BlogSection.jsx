@@ -66,15 +66,7 @@ export default function BlogSection() {
         </a>
       </p>
 
-      <div
-        className="blogs-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '16px',
-          marginBottom: '32px',
-        }}
-      >
+      <div className="blogs-grid" style={{ marginBottom: '32px' }}>
         {POSTS.map(post => (
           <a
             key={post.title}
@@ -100,25 +92,24 @@ export default function BlogSection() {
               e.currentTarget.style.transform = 'none';
             }}
           >
+            {/* Tags */}
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '12px' }}>
               {post.tags.map(t => (
-                <span
-                  key={t}
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '9px',
-                    padding: '2px 8px',
-                    borderRadius: '20px',
-                    background: 'var(--green-dim)',
-                    color: 'var(--green)',
-                    border: '1px solid var(--green-border)',
-                  }}
-                >
+                <span key={t} style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '9px',
+                  padding: '2px 8px',
+                  borderRadius: '20px',
+                  background: 'var(--green-dim)',
+                  color: 'var(--green)',
+                  border: '1px solid var(--green-border)',
+                }}>
                   {t}
                 </span>
               ))}
             </div>
 
+            {/* Title */}
             <h3 style={{
               fontSize: '15px',
               fontWeight: 600,
@@ -129,18 +120,24 @@ export default function BlogSection() {
               {post.title}
             </h3>
 
+            {/* Excerpt — clamped to 3 lines so cards stay even */}
             <p style={{
               fontSize: '12px',
               color: 'var(--muted)',
               lineHeight: 1.75,
-              flex: 1,
+              margin: '0 0 16px 0',
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
             }}>
               {post.excerpt}
             </p>
 
+            {/* Footer */}
             <div style={{
               borderTop: '1px solid var(--border)',
-              marginTop: '16px',
+              marginTop: 'auto',
               paddingTop: '12px',
               display: 'flex',
               justifyContent: 'space-between',
@@ -180,6 +177,19 @@ export default function BlogSection() {
           More posts on dev.to →
         </a>
       </div>
+
+      <style>{`
+        .fade-section { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-section.visible { opacity: 1; transform: none; }
+        .blogs-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+        @media (max-width: 700px) {
+          .blogs-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </section>
   );
 }
