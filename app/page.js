@@ -32,7 +32,7 @@ export default function Home() {
       }}>
         <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--faint)' }}>
           designed &amp; built by{' '}
-          <span style={{ color: 'var(--green)' }}>Aryan Sehgal</span> · 2025
+          <span style={{ color: 'var(--green)' }}>Aryan</span> · 2025
         </p>
         <div style={{ display: 'flex', gap: '20px' }}>
           {[

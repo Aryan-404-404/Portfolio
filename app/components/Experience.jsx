@@ -7,7 +7,7 @@ const EXPERIENCE = [
     type: 'Internship',
     role: 'Frontend Developer Intern',
     org: 'The Tann Mann Gaadi',
-    period: 'Feb 2025 – Present',
+    period: 'Feb 2026 – Present',
     location: 'Remote',
     bullets: [
       'Building production-ready UI components for an admin panel using React.js and Tailwind CSS, translating Figma designs with pixel-level accuracy.',

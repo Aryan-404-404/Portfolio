@@ -23,7 +23,7 @@ const CARDS = [
       <>
         <strong style={{ color: 'var(--text)' }}>Frontend Developer Intern</strong><br />
         The Tann Mann Gaadi · Remote<br />
-        Feb 2025 – Present
+        Feb 2026 – Present
       </>
     ),
   },
@@ -32,7 +32,7 @@ const CARDS = [
     body: (
       <>
         <strong style={{ color: 'var(--text)' }}>Indie Builder</strong><br />
-        2023 – Present<br />
+        2024 – Present<br />
         MERN · Groq AI · npm Published
       </>
     ),
@@ -42,7 +42,7 @@ const CARDS = [
     body: (
       <>
         <strong style={{ color: 'var(--text)' }}>BCA · DIT University</strong><br />
-        2022 – 2026 · CGPA: 8.60<br />
+        2023 – 2026 · CGPA: 8.60<br />
         Final Year Student
       </>
     ),

@@ -154,12 +154,12 @@ export default function Hero() {
             View Projects
           </a>
           <a
-            href="/MERN_Full_Stack_Aryan.pdf"
+            href="/AI_MERN_Aryan.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"
           >
-            Download CV
+            Download Resume
           </a>
         </div>
 
