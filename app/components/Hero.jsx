@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const STATS = [
-  { num: '4+',    label: 'Live Projects'  },
+  { num: '5+',    label: 'Live Projects'  },
   { num: '250+',  label: 'LC Problems'    },
   { num: '~1632', label: 'LC Rating'      },
   { num: 'npm',   label: 'Published Pkg'  },
@@ -16,6 +16,7 @@ const ROLES = [
   'MERN Stack Engineer',
   'Groq-Powered AI Builder',
   'npm Package Author',
+  'Backend logic · Frontend craft',
 ];
 
 export default function Hero() {

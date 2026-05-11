@@ -7,9 +7,10 @@ const NAV_LINKS = [
   { label: 'home',     href: '#home',     num: '00.' },
   { label: 'about',    href: '#about',    num: '01.' },
   { label: 'projects', href: '#projects', num: '02.' },
-  { label: 'skills',   href: '#skills',   num: '03.' },
-  { label: 'blogs',    href: '#blogs',    num: '04.' },
-  { label: 'contact',  href: '#contact',  num: '05.' },
+  { label: 'experience', href: '#experience', num: '03.' },
+  { label: 'skills',   href: '#skills',   num: '04.' },
+  { label: 'blogs',    href: '#blogs',    num: '05.' },
+  { label: 'contact',  href: '#contact',  num: '06.' },
 ];
 
 export default function Navbar() {

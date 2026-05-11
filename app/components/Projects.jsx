@@ -4,6 +4,16 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const PROJECTS = [
+  
+  {
+    title: 'RepoCLI',
+    tag: 'npm',
+    image: '/RepoCLI.png',
+    desc: 'Terminal AI agent published on npm that reads your entire codebase, fixes bugs autonomously, and raises GitHub issues from plain English commands. Uses Groq SDK for ultra-fast inference and Octokit for GitHub API integration.',
+    pills: ['TypeScript', 'Groq SDK', 'Octokit', 'Commander.js', 'Node.js'],
+    demo: null,
+    source: 'https://github.com/Aryan-404-404/repoCLI',
+  },
   {
     title: 'JobFlow.ai',
     tag: 'live',
@@ -30,16 +40,7 @@ const PROJECTS = [
     pills: ['TypeScript', 'Groq API', 'pdfjs-dist', 'Web Workers', 'React', 'Tailwind'],
     demo: 'https://ai-resume-analyzer-pi-ruby.vercel.app/',
     source: 'https://github.com/Aryan-404-404/AI-Resume-Analyzer',
-  },
-  {
-    title: 'RepoCLI',
-    tag: 'npm',
-    image: null,
-    desc: 'Terminal AI agent published on npm that reads your entire codebase, fixes bugs autonomously, and raises GitHub issues from plain English commands. Uses Groq SDK for ultra-fast inference and Octokit for GitHub API integration.',
-    pills: ['TypeScript', 'Groq SDK', 'Octokit', 'Commander.js', 'Node.js'],
-    demo: null,
-    source: 'https://github.com/Aryan-404-404/repoCLI',
-  },
+  }
 ];
 
 function ProjectCard({ project }) {

@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 const SKILL_CATS = [
   {
     label: 'Frontend',
-    items: ['React', 'Next.js 14', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Vite'],
+    items: ['React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Vite'],
   },
   {
     label: 'Backend',
@@ -28,6 +28,8 @@ const SKILL_CATS = [
     items: ['PDF Extraction', 'Web Workers', 'Chrome MV3', 'RBAC', 'Data Viz', 'Auth (JWT/BCrypt)'],
   },
 ];
+
+const LEARNING = ['Python', 'FastAPI', 'LangChain', 'RAG', 'Vector DBs'];
 
 const LC_STATS = [
   { label: 'Problems Solved', val: '250+' },
@@ -69,15 +71,15 @@ export default function Skills() {
           <p style={{
             fontSize: '14px', color: 'var(--muted)', lineHeight: 1.85, marginBottom: '28px',
           }}>
-            A comprehensive overview of my technical skills across the full stack — from
-            crafting polished UIs to architecting scalable backends, with AI integration
-            as the thread tying it all together.
+            Full-stack across the MERN ecosystem with AI integration as the core thread —
+            from agentic CLI tools to Chrome extensions. Currently pushing into the Python
+            AI/ML side of things.
           </p>
 
           {/* LeetCode card */}
           <div style={{
             background: 'var(--bg3)', border: '1px solid var(--border)',
-            borderRadius: '10px', padding: '20px',
+            borderRadius: '10px', padding: '20px', marginBottom: '16px',
           }}>
             <p style={{
               fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--green)',
@@ -110,6 +112,40 @@ export default function Skills() {
                 View LeetCode Profile →
               </a>
             </div>
+          </div>
+
+          {/* Currently Learning card */}
+          <div style={{
+            background: 'var(--bg3)', border: '1px solid var(--border)',
+            borderRadius: '10px', padding: '16px',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--green)',
+              letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '12px',
+            }}>
+              // currently learning
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+              {LEARNING.map(item => (
+                <span key={item} style={{
+                  fontFamily: 'var(--font-mono)', fontSize: '10px',
+                  padding: '4px 10px', borderRadius: '4px',
+                  border: '1px dashed var(--green-border)',
+                  color: 'var(--green)',
+                  background: 'var(--green-dim)',
+                  opacity: 0.75,
+                }}>
+                  {item}
+                </span>
+              ))}
+            </div>
+            <p style={{
+              fontFamily: 'var(--font-mono)', fontSize: '9px',
+              color: 'var(--faint)', marginTop: '10px', lineHeight: 1.6,
+            }}>
+              Express background makes FastAPI click fast.
+              RAG + vector DBs are next.
+            </p>
           </div>
         </div>
 
